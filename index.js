@@ -4,7 +4,23 @@ const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema');
 
 const users = [
-    { id: 1, username: 'Valya', age: 25 }
+    { 
+        id: '1', 
+        username: 'Valya', 
+        age: 25 
+    },
+    { 
+        id: '2', 
+        username: 'Marina', 
+        age: 20, 
+        posts: [
+            { 
+                id: '1', 
+                title: 'Hello World!', 
+                content: 'Actually I\'m write graphQL server!'
+            }
+        ] 
+    }
 ];
 
 const createUser = (input) => {
