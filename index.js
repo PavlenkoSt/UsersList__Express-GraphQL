@@ -3,7 +3,7 @@ const cors = require('cors');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema');
 
-const users = [
+let users = [
     { 
         id: '1', 
         username: 'Valya', 
@@ -24,7 +24,7 @@ const users = [
 ];
 
 const createUser = (input) => {
-    const id = Date.now();
+    const id = Date.now().toString();
     return { id, ...input };
 }
 
@@ -36,7 +36,8 @@ const root = {
         console.log(user);
         users.push(user);
         return user;
-    }
+    },
+    deleteUser: ({ id }) => users = users.filter(user => user.id !== id)
 };
 
 const app = express();
